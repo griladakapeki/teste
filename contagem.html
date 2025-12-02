@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Contagem Regressiva Especial</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #cfe8ff; /* azul claro */
+        color: #003366; /* azul escuro elegante */
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    #contador {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 20px;
+    }
+
+    #mensagem {
+        font-size: 32px;
+        display: none;
+        animation: fadeIn 3s ease-in-out forwards;
+        margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<h1>Contagem regressiva para vc ser meu bb oficial 💙</h1>
+
+<div id="contador">Carregando…</div>
+
+<div id="mensagem">
+    O momento chegou…  
+    Eu escolhi você para hoje, amanhã e todos os dias.  
+    Quer namorar comigo? ❤️
+</div>
+
+<script>
+    const dataAlvo = new Date("2026-02-26T00:00:00-03:00").getTime();
+
+    const timer = setInterval(function() {
+        const agora = new Date().getTime();
+        const distancia = dataAlvo - agora;
+
+        if (distancia <= 0) {
+            clearInterval(timer);
+            document.getElementById("contador").style.display = "none";
+            document.getElementById("mensagem").style.display = "block";
+            return;
+        }
+
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+        document.getElementById("contador").innerHTML =
+            `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+
+    }, 1000);
+</script>
+
+</body>
+</html>
